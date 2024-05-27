@@ -127,11 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EnginePoweredWaterTransport.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NuclearSubmarine.cpp" />
+    <ClCompile Include="Submarine.cpp" />
+    <ClCompile Include="TouristBoat.cpp" />
     <ClCompile Include="WaterTransport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnginePoweredWaterTransport.h" />
     <ClInclude Include="IWaterTransport.h" />
+    <ClInclude Include="NuclearSubmarine.h" />
+    <ClInclude Include="Submarine.h" />
+    <ClInclude Include="TouristBoat.h" />
     <ClInclude Include="WaterTransport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
