@@ -1,5 +1,5 @@
 #include "IWaterTransport.h"
-
+#include <iostream>
 #pragma once
 
 // базовый класс

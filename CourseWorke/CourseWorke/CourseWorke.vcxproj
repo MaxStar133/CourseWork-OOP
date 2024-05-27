@@ -127,17 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Catamaran.cpp" />
+    <ClCompile Include="CruiseLiner.cpp" />
     <ClCompile Include="EnginePoweredWaterTransport.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="NuclearSubmarine.cpp" />
+    <ClCompile Include="Sailboat.cpp" />
     <ClCompile Include="Submarine.cpp" />
     <ClCompile Include="TouristBoat.cpp" />
     <ClCompile Include="WaterTransport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Catamaran.h" />
+    <ClInclude Include="CruiseLiner.h" />
     <ClInclude Include="EnginePoweredWaterTransport.h" />
     <ClInclude Include="IWaterTransport.h" />
+    <ClInclude Include="MyVector.h" />
     <ClInclude Include="NuclearSubmarine.h" />
+    <ClInclude Include="Sailboat.h" />
     <ClInclude Include="Submarine.h" />
     <ClInclude Include="TouristBoat.h" />
     <ClInclude Include="WaterTransport.h" />
