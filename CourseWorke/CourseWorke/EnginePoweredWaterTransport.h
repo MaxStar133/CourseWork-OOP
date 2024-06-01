@@ -3,7 +3,7 @@
 #include "WaterTransport.h"
 
 //класс для водного транспорта с двигателем
-class EnginePoweredWaterTransport :
+class EnginePoweredWaterTransport : 
     public WaterTransport
 {
     private:
@@ -13,5 +13,6 @@ class EnginePoweredWaterTransport :
         void SetPowerEngine(int PowerEngine);
         int GetPowerEngine();
         void Print();
+        void PrintToFile(std::ofstream& outputFile);
         ~EnginePoweredWaterTransport() {};
 };

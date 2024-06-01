@@ -1,0 +1,23 @@
+Boat 1:
+Name: Boat 1
+Max Speed: 1
+Passenger Capacity: 10
+
+Boat 2:
+Name: Boat 2
+Max Speed: 10
+Passenger Capacity: 20
+Power Engine: 500
+
+Boat 3:
+Name: Boat 3
+Max Speed: 40
+Passenger Capacity: 20
+Power Engine: 500
+
+Boat 4:
+Name: Boat 4
+Max Speed: 40
+Passenger Capacity: 20
+Power Engine: 500
+

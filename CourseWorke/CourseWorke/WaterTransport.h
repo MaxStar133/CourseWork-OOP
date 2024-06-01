@@ -13,11 +13,13 @@ private:
 public:
     WaterTransport();
     void SetMaxSpeed(double MaxSpeed);
-    double GetMaxSpeed() const override;
+    double GetMaxSpeed() override;
     void SetPassengerCapacity(int PassengerCapacity);
-    int GetPassengerCapacity() const override;
+    int GetPassengerCapacity() override;
     void SetName(std::string Type);
-    std::string GetName() const override;
+    std::string GetName() override;
+    void Print() override;
+    void PrintToFile(std::ofstream& outputFile)  override;
     ~WaterTransport() {};
 };
 
