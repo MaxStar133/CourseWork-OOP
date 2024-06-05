@@ -3,6 +3,14 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include "IWaterTransport.h"
+#include "WaterTransport.h"
+#include "EnginePoweredWaterTransport.h"
+#include "TouristBoat.h"
+#include "Sailboat.h"
+#include "Catamaran.h"
+#include "CruiseLiner.h"
+#include "NuclearSubmarine.h"
 using namespace std;
 
 template <typename T>
@@ -49,13 +57,12 @@ template <typename T>
         typename std::vector<T>::iterator End() {
             return vec.end();
         }
-        // Sort function
+
         template <typename Comparator>
         void Sort(Comparator comp) {
             sort(vec.begin(), vec.end(), comp);
         }
 
-        // Find elements in a range based on a predicate
         template <typename Predicate>
         std::vector<T> FindInRange(Predicate pred) const {
             std::vector<T> result;
@@ -74,12 +81,62 @@ template <typename T>
                 return;
             }
             for (size_t i = 0; i < Size(); ++i) {
-                outputFile << "Boat " << (i + 1) << ":\n";
                 At(i)->PrintToFile(outputFile);
-                outputFile << endl;
             }
             outputFile.close();
         }
+
+ /*       void InputFromFile(const string& filename) {
+            ifstream inputFile(filename);
+            if (!inputFile.is_open()) {
+                cout << "Ошибка: Не удалось открыть файл для чтения.\n";
+                return;
+            }
+            string type;
+            while (getline(inputFile, type)) {
+                if (type == "WATER_TRANSPORT") {
+                    WaterTransport* boat = new WaterTransport();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "ENGINE_POWERED_WATER_TRANSPORT") {
+                    EnginePoweredWaterTransport* boat = new EnginePoweredWaterTransport();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "CATAMARAN") {
+                    Catamaran* boat = new Catamaran();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "SAIL_BOAT") {
+                    Sailboat* boat = new Sailboat();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "SUBMARINE") {
+                    Submarine* boat = new Submarine();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "TOURIST_BOAT") {
+                    TouristBoat* boat = new TouristBoat();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "CRUISE_LINER") {
+                    CruiseLiner* boat = new CruiseLiner();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+                else if (type == "NUCLEAR_SUBMARINE") {
+                    NuclearSubmarine* boat = new NuclearSubmarine();
+                    boat->ReadFromFile(inputFile);
+                    Push_back(boat);
+                }
+            }
+            inputFile.close();
+        }*/
 
         ~MyVector() {
             vec.clear();

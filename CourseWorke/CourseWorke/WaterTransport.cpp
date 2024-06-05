@@ -2,34 +2,40 @@
 using namespace std;
 
 WaterTransport::WaterTransport() {
-    Name = "WaterTransport";
+    name = "WaterTransport";
 
-    MaxSpeed = 70;
-    PassengerCapacity = 6;
+    maxSpeed = 70;
+    passengerCapacity = 6;
 }
 
-void WaterTransport::SetMaxSpeed(double MaxSpeed) {
-    this->MaxSpeed = MaxSpeed;
+void WaterTransport::SetMaxSpeed(double maxSpeed) {
+    if (maxSpeed < 0) {
+        throw std::invalid_argument("Максимальная скорость не может быть отрицательной.");
+    }
+    this->maxSpeed = maxSpeed;
 }
 
 double WaterTransport::GetMaxSpeed()   {
-    return MaxSpeed;
+    return maxSpeed;
 }
 
-void WaterTransport::SetPassengerCapacity(int PassengerCapacity) {
-    this->PassengerCapacity = PassengerCapacity;
+void WaterTransport::SetPassengerCapacity(int passengerCapacity) {
+    if (passengerCapacity < 0) {
+        throw std::invalid_argument("Вместимость пассажиров не может быть отрицательной.");
+    }
+    this->passengerCapacity = passengerCapacity;
 }
 
 int WaterTransport::GetPassengerCapacity()  {
-    return PassengerCapacity;
+    return passengerCapacity;
 }
 
-void WaterTransport::SetName(std::string Type) {
-    this->Name = Type;
+void WaterTransport::SetName(std::string type) {
+    this->name = type;
 }
 
 std::string WaterTransport::GetName()   {
-    return Name;
+    return name;
 }
 
 void WaterTransport::Print() {
@@ -39,7 +45,21 @@ void WaterTransport::Print() {
 }
 
 void WaterTransport::PrintToFile(std::ofstream& outputFile) {
-    outputFile << "Name: " << this->GetName() << std::endl;
-    outputFile << "Max Speed: " << this->GetMaxSpeed() << std::endl;
-    outputFile << "Passenger Capacity: " << this->GetPassengerCapacity() << std::endl;
+    outputFile << "WATER_TRANSPORT" << endl;
+    outputFile  << this->GetName() << std::endl;
+    outputFile  << this->GetMaxSpeed() << std::endl;
+    outputFile  << this->GetPassengerCapacity() << std::endl;
+}
+void WaterTransport::ReadFromFile(std::ifstream& inFile) {
+    string name;
+    double maxSpeed;
+    int passengerCapacity;
+
+    getline(inFile, name);
+    inFile >> maxSpeed;
+    inFile >> passengerCapacity;
+
+    this->SetName(name);
+    this->SetMaxSpeed(maxSpeed);
+    this->SetPassengerCapacity(passengerCapacity);
 }
