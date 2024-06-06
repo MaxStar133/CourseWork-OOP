@@ -51,36 +51,6 @@ protected:
         return tempQueue.front();
     }
 
-    //template <typename Comparator>
-    //void sort(Comparator comp) {
-    //    std::vector<void*> vec;
-    //    while (!container.empty()) {
-    //        vec.push_back(container.front());
-    //        container.pop();
-    //    }
-
-    //    std::sort(vec.begin(), vec.end(), comp);
-
-    //    for (void* item : vec) {
-    //        container.push(item);
-    //    }
-    //}
-
-    //template <typename Predicate>
-    //std::vector<void*> findInRange(Predicate pred) const {
-    //    std::vector<void*> result;
-    //    std::queue<void*> tempQueue = container;
-
-    //    while (!tempQueue.empty()) {
-    //        void* item = tempQueue.front();
-    //        tempQueue.pop();
-    //        if (pred(item)) {
-    //            result.push_back(item);
-    //        }
-    //    }
-
-    //    return result;
-    //}
 
     void OutputToFile(const string& filename) {
         ofstream outputFile(filename);
@@ -153,7 +123,7 @@ protected:
         while (!tempQueue.empty()) {
             void* item = tempQueue.front();
             tempQueue.pop();
-            // Проверяем, является ли объект водным транспортом и имеет ли он указанное имя
+        
             if (static_cast<IWaterTransport*>(item)->GetName() == name) {
                 static_cast<IWaterTransport*>(item)->Print();
                 found = true;

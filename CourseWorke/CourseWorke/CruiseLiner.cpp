@@ -12,14 +12,14 @@ CruiseLiner::CruiseLiner(std::string name, double maxSpeed, int passengerCapacit
     this->SetTicketPrice(ticketPrice);
 };
 
-void CruiseLiner::SetHeightWaterSlides(double heightWaterSlides) {
+void CruiseLiner::SetHeightWaterSlides(int heightWaterSlides) {
     if (heightWaterSlides < 0) {
         throw std::invalid_argument("¬ысота водных горок не может быть отрицательной.");
     }
     this->heightWaterSlides = heightWaterSlides;
 }
 
-double CruiseLiner::GetHeightWaterSlides() {
+int CruiseLiner::GetHeightWaterSlides() {
 	return heightWaterSlides;
 }
 

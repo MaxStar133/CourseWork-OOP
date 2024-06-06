@@ -9,14 +9,14 @@ Sailboat::Sailboat(std::string name, double maxSpeed, int passengerCapacity, int
     this->SetMaxSpeed(maxSpeed);
     this->SetPassengerCapacity(maxSpeed);
 };
-void Sailboat::SetSailArea(double sailArea) {
+void Sailboat::SetSailArea(int sailArea) {
     if (sailArea <= 0) {
         throw std::invalid_argument("Площадь не может быть отрицательной или не может быть равна 0.");
     }
 	this->sailArea = sailArea;
 }
 
-double Sailboat::GetSailArea() {
+int Sailboat::GetSailArea() {
 	return sailArea;
 }
 

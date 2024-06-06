@@ -1,4 +1,4 @@
- #include <iostream>
+#include <iostream>
 #include "TmpQueue.h"
 #include "MyVector.h"
 #include "IWaterTransport.h"
@@ -143,6 +143,7 @@
                             }
                         }
                         inputFile.close();
+						cout << "---------------------------Файл успешно загружен---------------------------" << endl;
 				break;
 
 			case 2:
@@ -169,22 +170,23 @@
 				int passengerCapacity;
 				std::cout << "Введите имя транспорта: ";
 				std::cin >> name;
-				std::cout << "Введите максимальную скорость транспорта: ";
+				std::cout << "Введите максимальную скорость транспорта (км/ч): ";
 				std::cin >> maxSpeed;
 				std::cout << "Введите вместимость пассажиров: ";
 				std::cin >> passengerCapacity;
 				if (action == 1) {
 					int sailArea;
-					std::cout << "Введите площадь паруса: ";
+					std::cout << "Введите площадь паруса (кв. м): ";
                     std::cin >> sailArea;
 					try {
 						Sailboat* boat = new Sailboat(name, maxSpeed, passengerCapacity, sailArea);
 						sailboatVec.Push_back(boat);
 						queue.Enqueue(boat);
 					}
-					catch (exception ex) {
+					catch (invalid_argument ex) {
 						std::cout << "---------------------------" << ex.what() << "---------------------------" << endl;
 					}
+					break;
 				}
 				if (action == 2) {
 					int numberOfPedals;
@@ -195,47 +197,50 @@
 						catamaranVec.Push_back(boat);
 						queue.Enqueue(boat);
 					}
-					catch (exception ex) {
+					catch (invalid_argument ex) {
 						std::cout << "---------------------------" << ex.what() << "---------------------------" << endl;
 					}
+					break;
 				}
 				else if (action == 3) {
 					int powerEngine;
 					int ticketPrice;
 					int heightWaterSlides;
-					std::cout << "Введите мощность двигателя: ";
+					std::cout << "Введите мощность двигателя (Л/С): ";
 					std::cin >> powerEngine;
-					std::cout << "Введите стоимость билета: ";
+					std::cout << "Введите стоимость билета (руб.): ";
 					std::cin >> ticketPrice;
-					std::cout << "Введите высоту водных горок: ";
+					std::cout << "Введите высоту водных горок (м): ";
 					std::cin >> heightWaterSlides;
 					try {
 						CruiseLiner* boat = new CruiseLiner(name, maxSpeed, passengerCapacity, powerEngine, ticketPrice, heightWaterSlides);
 						cruiseLinerVec.Push_back(boat);
 						queue.Enqueue(boat);
 					}
-					catch (exception ex) {
+					catch (invalid_argument ex) {
 						std::cout << "---------------------------" << ex.what() << "---------------------------" << endl;
 					}
+					break;
 				}
 				else if (action == 4) {
 					int powerEngine;
 					double divingDepth;
 					double powerAtomicBomb;
-					std::cout << "Введите мощность двигателя: ";
+					std::cout << "Введите мощность двигателя (Л/С): ";
 					std::cin >> powerEngine;
-					std::cout << "Введите глубину погружения: ";
+					std::cout << "Введите глубину погружения (м): ";
 					std::cin >> divingDepth;
-					std::cout << "Введите мощность ядерного заряда: ";
+					std::cout << "Введите мощность ядерного заряда (Мт): ";
 					std::cin >> powerAtomicBomb;
 					try {
 						NuclearSubmarine* boat = new NuclearSubmarine(name, maxSpeed, passengerCapacity, powerEngine, divingDepth, powerAtomicBomb);
 						nuclearSubmarineVec.Push_back(boat);
 						queue.Enqueue(boat);
 					}
-					catch (exception ex) {
+					catch (invalid_argument ex) {
 						std::cout << "---------------------------" << ex.what() << "---------------------------" << endl;
 					}
+					break;
 				}
 				else {
 					std::cout << "---------------------------Неизвестный вид транспорта---------------------------" << endl;
@@ -246,7 +251,7 @@
 
 				std::cout << "По какому признаку вы бы хотели отсортировать транспорт?" << endl;
 				std::cout << "1.Скорость" << endl;
-				std::cout << "2.Вместимость пассажир" << endl;
+				std::cout << "2.Вместимость пассажиров" << endl;
 				std::cout << "Введите номер признака для сортировки: ";
 				std::cin >> action;
 				int sort;
@@ -381,7 +386,7 @@
 							std::cin >> min;
 							std::cout << "Ввведите max." << endl;
 							std::cin >> max;
-
+							std::cout << endl;
 							auto result1 = sailboatVec.FindInRange([min, max](Sailboat* boat) {
 								return boat->GetPassengerCapacity() >= min && boat->GetPassengerCapacity() <= max;
 								});
@@ -422,108 +427,12 @@
 				queue.OutputToFile(nameFile);
 				cout << "---------------------------Файл успешно сохранён---------------------------" << endl;
 				break;
-#pragma endregion
+
 			default:
 				std::cout << "---------------------------Неизвестная команда, введите еще раз---------------------------" << endl;
 				break;
 			}
 		}
-
-        //MyVector<WaterTransport*> fleet;
-       
-
-        //WaterTransport* boat1 = new WaterTransport();
-        //boat1->SetName("Boat 1");
-        //boat1->SetMaxSpeed(1);
-        //boat1->SetPassengerCapacity(10);
-
-        //EnginePoweredWaterTransport* boat2 = new EnginePoweredWaterTransport();
-        //boat2->SetName("Boat 2");
-        //boat2->SetMaxSpeed(10);
-        //boat2->SetPassengerCapacity(20);
-        //boat2->SetPowerEngine(500);
-
-        //EnginePoweredWaterTransport* boat3 = new EnginePoweredWaterTransport();
-        //boat3->SetName("Boat 3");
-        //boat3->SetMaxSpeed(40);
-        //boat3->SetPassengerCapacity(20);
-        //boat3->SetPowerEngine(500);
-
-        //EnginePoweredWaterTransport* boat4 = new EnginePoweredWaterTransport();
-        //boat4->SetName("Boat 4");
-        //boat4->SetMaxSpeed(40);
-        //boat4->SetPassengerCapacity(20);
-        //boat4->SetPowerEngine(500);
-
-        //fleet.Push_back(boat1);
-        //fleet.Push_back(boat2);
-        //fleet.Push_back(boat3);
-        //fleet.Push_back(boat4);
-        //std::cout << fleet << endl;
-        //boat1->SetMaxSpeed(2);
-
-        //fleet.OutputToFile("C:/Users/ov4in/OneDrive/Рабочий стол/DataSstd::cince/Test.txt");
-
-        //MyVector<WaterTransport*> newFleet;
-        //newFleet.InputFromFile("C:/Users/ov4in/OneDrive/Рабочий стол/DataSstd::cince/Test.txt");
-
-        //std::cout << "==============================" << endl;
-        //std::cout << newFleet << endl;
-   
-        //std::cout << "==============================" << endl;
-
-        //queue.Enqueue(boat1);
-        //queue.Enqueue(boat2);
-
-
-        //for (size_t i = 0; i < fleet.Size(); ++i) {
-        //    fleet.At(i)->Print();
-        //}
-
-        //fleet.Sort([](WaterTransport* a, WaterTransport* b) {
-        //    return a->GetMaxSpeed() < b->GetMaxSpeed();
-        //    });
-
-        //std::cout << "\nSorted fleet by max speed:\n";
-        //for (size_t i = 0; i < fleet.Size(); ++i) {
-        //    fleet.At(i)->Print();
-        //}
-
-        //// Find all boats with max speed between 0 and 10
-        //auto result = fleet.FindInRange([](WaterTransport* boat) {
-        //    return boat->GetMaxSpeed() >= 0 && boat->GetMaxSpeed() <= 10;
-        //    });
-
-        //std::cout << "\nBoats with max speed between 0 and 10:\n";
-        //for (const auto& boat : result) {
-        //    boat->Print();
-        //}
-        //std::cout << endl;
-        //std::cout << endl;
-
-        //std::cout << fleet << endl;
-
-        //std::cout << "\nQueue\n";
-        //for (size_t i = 0; i < queue.Size(); ++i) {
-        //    queue.At(i)->Print();
-        //}
-        //queue.OutputToFile("queue_data.txt");
-        //TmpQueue<IWaterTransport> newQueue;
-        //newQueue.InputFromFile("queue_data.txt");
-
-        //std::cout << "==============================" << endl;
-        //for (size_t i = 0; i < newQueue.Size(); ++i) {
-        //    newQueue.At(i)->Print();
-        //}
-        //std::cout << "==============================" << endl;
-
-
-        //std::cout << "Original queue:\n";
-        //for (size_t i = 0; i < queue.Size(); ++i) {
-        //    queue.At(i)->Print();
-        //}std::cout << "==============================" << endl;
-        //queue.PrintByName("Boat 1");
-        //std::cout << "==============================" << endl;
 
 
         return 0;

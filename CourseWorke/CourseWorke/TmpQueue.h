@@ -24,26 +24,7 @@ public:
         return static_cast<T*>(VoidQueue::At(index));  
     }
 
-    //template <typename Comparator>
-    //void sort(Comparator comp) {
-    //    VoidQueue::sort([comp](void* a, void* b) {
-    //        return comp(static_cast<T*>(a), static_cast<T*>(b));
-    //        });
-    //}
 
-    //template <typename Predicate>
-    //std::vector<T*> findInRange(Predicate pred) const {
-    //    auto result = VoidQueue::findInRange([pred](void* item) {
-    //        return pred(static_cast<T*>(item));
-    //        });
-
-    //    std::vector<T*> typedResult;
-    //    for (void* item : result) {
-    //        typedResult.push_back(static_cast<T*>(item));
-    //    }
-
-    //    return typedResult;
-    //}
 
     void OutputToFile(const string& filename) {
         VoidQueue::OutputToFile(filename);

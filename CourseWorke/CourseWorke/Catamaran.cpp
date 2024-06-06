@@ -9,13 +9,13 @@ Catamaran::Catamaran(std::string name, double maxSpeed, int passengerCapacity, i
     this->SetMaxSpeed(maxSpeed);
     this->SetPassengerCapacity(maxSpeed);
 };
-void Catamaran::SetNumberOfPedals(double numberOfPedals) {
+void Catamaran::SetNumberOfPedals(int numberOfPedals) {
     if (numberOfPedals <= 0) {
         throw std::invalid_argument("Количество педалей не может быть отрицательным или равно 0.");
     }
     this->numberOfPedals = numberOfPedals;
 }
-double Catamaran::GetNumberOfPedals() {
+int Catamaran::GetNumberOfPedals() {
 	return numberOfPedals;
 }
 
